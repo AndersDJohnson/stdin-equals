@@ -1,6 +1,6 @@
 # stdin-equals
 
-Check if stdin equals a string. Includes a CLI.
+Check if stdin equals a string. Includes a CLI. When not equal, (optionally) prints diff with [`nwdiff`](https://github.com/AndersDJohnson/nwdiff).
 
 ## API
 
