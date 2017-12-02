@@ -1,0 +1,33 @@
+{
+  "name": "stdin-equals",
+  "version": "1.0.0",
+  "description": "Check if stdin equals a string.",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "repository": "AndersDJohnson/stdin-equals",
+  "bin": {
+    "stdin-equals": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "babel src --ignore '*.test.js,__tests__/*' -d dist",
+    "test": "yarn test:src && yarn test:src:quiet && fails 'yarn test:src:fails' && yarn test:dist && fails 'yarn test:dist:fails'",
+    "test:src": "echo 'foo' | babel-node ./src/cli.js 'foo\n'",
+    "test:src:quiet": "echo 'should not see' | babel-node ./src/cli.js -- -q -h 'foo\n'",
+    "test:src:fails": "echo 'foo' | babel-node ./src/cli.js 'bar\n'",
+    "test:dist": "echo 'foo' | node ./dist/cli.js 'foo\n'",
+    "test:dist:fails": "echo 'foo' | node ./dist/cli.js 'bar\n'"
+  },
+  "dependencies": {
+    "chalk": "^2.3.0",
+    "diff": "^3.4.0",
+    "get-stdin": "^5.0.1",
+    "nwdiff": "^1.0.0",
+    "yargs": "^10.0.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "fails": "^1.0.1"
+  }
+}
