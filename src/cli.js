@@ -13,7 +13,11 @@ const argv = yargs
   .alias('h', 'help')
   .argv
 
-const { quiet, _: [ expected ] } = argv
+const { help, quiet, _: [ expected ] } = argv
+
+if (help) {
+  process.exit(0)
+}
 
 stdinEquals(expected).then(({ equal, stdin }) => {
   if (!equal) {
