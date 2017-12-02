@@ -23,6 +23,7 @@ stdinEquals(expected).then(({ equal, stdin }) => {
   }
 
   // TODO: Figure out how to stream stdin to stdout but still get it for above.
+  // TODO: Figure out how to include colors.
   if (!quiet) {
     console.log(stdin)
   }
