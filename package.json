@@ -10,9 +10,10 @@
   },
   "scripts": {
     "build": "babel src --ignore '*.test.js,__tests__/*' -d dist",
-    "test": "yarn test:src && yarn test:src:quiet && fails 'yarn test:src:fails' && yarn test:dist && fails 'yarn test:dist:fails'",
+    "test": "yarn test:src && yarn test:src:help && yarn test:src:quiet && fails 'yarn test:src:fails' && yarn test:dist && fails 'yarn test:dist:fails'",
     "test:src": "echo 'foo' | babel-node ./src/cli.js 'foo\n'",
-    "test:src:quiet": "echo 'should not see' | babel-node ./src/cli.js -- -q -h 'foo\n'",
+    "test:src:help": "echo 'foo' | babel-node ./src/cli.js -h 'foo\n'",
+    "test:src:quiet": "echo 'foo' | babel-node ./src/cli.js -q 'foo\n'",
     "test:src:fails": "echo 'foo' | babel-node ./src/cli.js 'bar\n'",
     "test:dist": "echo 'foo' | node ./dist/cli.js 'foo\n'",
     "test:dist:fails": "echo 'foo' | node ./dist/cli.js 'bar\n'"
